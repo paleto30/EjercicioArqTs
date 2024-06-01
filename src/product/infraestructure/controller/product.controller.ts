@@ -60,4 +60,22 @@ export class ProductController {
         }
     }
 
+
+    async updateProduct(req: Request, res: Response) {
+        try {
+
+            const { code, name, price, stock } = req.body;
+            const { id } = req.params;
+            const response = await this.productUseCases.update(+id, new Product(code, name, price, stock, +id))
+            res.json({
+                success: true,
+                message: 'Actualizado correctamente.',
+                response
+            })
+
+        } catch (error: CustomError | Error | any) {
+            handlerError(res, error);
+        }
+    }
+
 }

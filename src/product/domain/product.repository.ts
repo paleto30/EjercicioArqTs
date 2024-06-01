@@ -11,7 +11,10 @@ interface FindProductI {
     findByCode(code: string): Promise<Product | null>
 }
 
+interface UpdateProductI{
+    updateProduct(id: number, product: Product): Promise<Product>
+}
 
-export interface ProductRepository extends CreatePoductI, FindProductI {
+export interface ProductRepository extends CreatePoductI, FindProductI, UpdateProductI {
 
 }

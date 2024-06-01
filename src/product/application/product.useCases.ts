@@ -52,4 +52,14 @@ export class ProductUseCases {
         }
     }
 
+
+    async update(id: number, product: Product): Promise<Product> {
+        try {
+            const updateProduct = await this.productRepository.updateProduct(id, product);
+            return updateProduct;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }   

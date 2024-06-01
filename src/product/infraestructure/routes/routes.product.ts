@@ -39,4 +39,14 @@ router.get(
 )
 
 
+router.put(
+    '/:id',
+    [
+        validateParams(findProductByIdDto),
+        validateDto(CreateProductDto)
+    ],
+    controller.updateProduct.bind(controller)
+)
+
+
 export default router;

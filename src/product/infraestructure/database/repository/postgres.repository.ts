@@ -82,6 +82,18 @@ class PostgresRepository implements ProductRepository {
         }
     }
 
+
+    async updateProduct(id: number, product: Product): Promise<Product> {
+        try {
+            const updateProduct = await this.repository.update(id, this.toEntity(product));
+            if (!updateProduct) {
+                throw new CustomError('No se encontro el registro para actualizar.', 404)
+            }
+            return product;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 
